@@ -4,7 +4,8 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import serviceWorker from "astrojs-service-worker";
 import fast from "./src/scripts/fast-compress";
-import mermaid from 'astro-mermaid';
+import editableSketchIndent from "./src/scripts/viteEditableSketchIndent";
+import mermaid from "astro-mermaid";
 
 // Allow skipping compression step for faster test build times
 // DO NOT SKIP COMPRESSION FOR DEPLOYMENT!
@@ -18,13 +19,13 @@ if (shouldSkipCompress) {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://p5js.org',
+  site: "https://p5js.org",
   compressHTML: false,
   legacy: {
-    collections: true
+    collections: true,
   },
   integrations: [
-    mermaid({autoTheme: true}),
+    mermaid({ autoTheme: true }),
     preact({
       compat: true,
     }),
@@ -60,7 +61,7 @@ export default defineConfig({
   trailingSlash: "always",
   build: {
     format: "directory",
-    concurrency: 2
+    concurrency: 2,
   },
   server: {
     watch: {
@@ -68,8 +69,9 @@ export default defineConfig({
     },
   },
   vite: {
+    plugins: [editableSketchIndent()],
     optimizeDeps: {
-      exclude: ["@swc/html"]
+      exclude: ["@swc/html"],
     },
     rollupOptions: {
       external: ["/src/scripts/*"],
@@ -77,11 +79,11 @@ export default defineConfig({
   },
   image: {
     domains: ["openprocessing.org"],
-    service: passthroughImageService()
+    service: passthroughImageService(),
   },
   markdown: {
     shikiConfig: {
-      theme: 'github-light-high-contrast',
+      theme: "github-light-high-contrast",
     },
   },
 });
