@@ -488,9 +488,9 @@ ${end('main')}`}>
 
   // 그려지는 객체의 변환
   // ModelViewMatrix = ViewMatrix * ModelMatrix
-  // Model matrix는 오브젝트 스페이스에서 월드 스페이스로 변환하는 행렬입니다
-  // View matrix는 월드 스페이스에서 카메라 스페이스로 변환하는 행렬입니다
-  // 즉, ModelViewMatrix는 오브젝트 스페이스에서 카메라 스페이스로 변환하는 행렬입니다
+  // Model matrix는 오브젝트 공간에서 세상 공간(world space)으로 변환하는 행렬입니다
+  // View matrix는 세상 공간에서 카메라 공간으로 변환하는 행렬입니다
+  // 즉, ModelViewMatrix는 오브젝트 공간에서 카메라 공간로 변환하는 행렬입니다
   uniform mat4 uModelViewMatrix;
 
   // 3D 좌표를 2D 화면 좌표로 변환합니다
@@ -553,7 +553,7 @@ ${end('main')}`}>
   attribute vec3 aPosition;
 
   // 그려지는 객체의 변환
-  // (오브젝트 스페이스 -> 카메라 스페이스)
+  // (오브젝트 공간 -> 카메라 공간)
   uniform mat4 uModelViewMatrix;
 
   // 3D 좌표를 2D 화면 좌표로 변환합니다
